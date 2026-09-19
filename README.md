@@ -1,2 +1,2 @@
 # ai_agents
-Building AI agents
+Learning about and building AI agents in python
