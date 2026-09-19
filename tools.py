@@ -3,18 +3,19 @@ from langchain_community.utilities import WikipediaAPIWrapper
 from langchain_classic.agents import Tool
 from datetime import datetime
 
+# search engine
 search = DuckDuckGoSearchRun()
 search_tool = Tool(
-     name ='search' ,
+    name ='search' ,
     func= search.run,
-    description = 'Search the wen for information'
+    description = 'Search the web for information'
 )
 
-
+# calls api
 api_wrapper = WikipediaAPIWrapper(top_k_results= 1, doc_content_chars_max = 100)
 wiki_tool = WikipediaQueryRun(api_wrapper= api_wrapper)
 
-
+#custom tool
 def save_to_txt(data: str, filename: str = "research_output.txt"):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     formatted_text = f"--- Research Output ---\nTimestamp: {timestamp}\n\n{data}\n\n"
